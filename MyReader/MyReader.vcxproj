@@ -152,16 +152,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cluster.h" />
+    <ClInclude Include="Decorator.h" />
     <ClInclude Include="DiskReader.h" />
     <ClInclude Include="ExFat_FS.h" />
     <ClInclude Include="FileSystemParent.h" />
+    <ClInclude Include="FSFactory.h" />
+    <ClInclude Include="InteratorTemp.h" />
+    <ClInclude Include="Iterator.h" />
     <ClInclude Include="NTFS_FS.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cluster.cpp" />
+    <ClCompile Include="Decorator.cpp" />
     <ClCompile Include="DiskReader.cpp" />
     <ClCompile Include="ExFat_FS.cpp" />
     <ClCompile Include="FileSystemParent.cpp" />
+    <ClCompile Include="FSFactory.cpp" />
+    <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="MyReader.cpp" />
     <ClCompile Include="NTFS_FS.cpp" />
     <ClCompile Include="pch.cpp">

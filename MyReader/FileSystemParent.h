@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <string>
 #include "DiskReader.h"
+#include "Cluster.h"
 
 using namespace std;
 
@@ -11,6 +12,8 @@ public:
 	FileSystemParent();
 
 	void ShowInfo();
+	Cluster* ReadCluster(UINT32 number);
+	UINT32 GetClustersCount();
 
 	~FileSystemParent();
 protected:

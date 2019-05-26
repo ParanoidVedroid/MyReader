@@ -7,33 +7,59 @@
 #include "FileSystemParent.h"
 #include "NTFS_FS.h"
 #include "ExFat_FS.h"
+#include "FSFactory.h"
+#include "Decorator.h"
 
 using namespace std;
 
 int main()
 {
-	string str = "\\\\.\\F:";
-
 	DiskReader *dr = NULL;
-	NTFS_FS *ntfs = NULL;
+	FileSystemParent *fs = NULL;
+	Cluster *c = NULL;
+	Decorator *dec = NULL;
 
+	string diskLetter;
+	cout << "Partition path: ";
+	getline(cin, diskLetter);
 
-	BYTE *arr = NULL;
 
 	try {
-		dr = new DiskReader(str);
-		arr = dr->ReadData(0,1024);
+		
+		dr = new DiskReader("\\\\.\\" + diskLetter + ":");
+		fs = FSFactory::CreateFS(dr);
 
+		while (true)
+		{
+			cout << "\n1. print info\n" << "2. show pdf clusters\n" << "3. exit" << endl;
 
-		ntfs = new NTFS_FS(dr);
-		ntfs->ShowInfo();
+			int temp;
+			cin >> temp;
+			switch (temp)
+			{
+			case 1:
+				fs->ShowInfo();
+				break;
+			case 2:
+				dec = new Decorator(new Iterator(fs));
+				for(dec->First(); !dec->IsDone(); dec->Next())
+					printf("0x%X\n", dec->GetCurrentNumber());
+				break;
+			case 3:
+				return 0;
+			default:
+				break;
+			}
+		}
 
 	}
 	catch (exception e) {
 		cout << e.what() << endl;
 	}
 	
-	delete ntfs;
+	delete dec;
+	delete c;
+	delete fs;
 	delete dr;
 	
 

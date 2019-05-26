@@ -16,6 +16,18 @@ void FileSystemParent::ShowInfo()
 		"Total capacity, bytes: " << _totalCapasity << endl;
 }
 
+UINT32 FileSystemParent::GetClustersCount()
+{
+	return _totalClusters;
+}
+
+Cluster* FileSystemParent::ReadCluster(UINT32 number)
+{
+	UINT32 offset = number * _bytesPerCluster;
+	BYTE* data = _handle->ReadData(offset, _bytesPerCluster);
+	return new Cluster(data, _bytesPerCluster);
+}
+
 FileSystemParent::~FileSystemParent()
 {
 }
