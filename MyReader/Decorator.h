@@ -30,13 +30,13 @@ public:
 	virtual void First()
 	{
 		simpleIterator->First();
-
 		while (!simpleIterator->IsDone())
 		{
-			Cluster *c = simpleIterator->GetCurrent();
-			if (Is_PDF(c->GetData())) break;
+			Cluster *cluster = simpleIterator->GetCurrent();
+			if (Is_PDF(cluster->GetData())) break;
 			simpleIterator->Next();
 		}
+
 	}
 
 	virtual void Next()
@@ -44,8 +44,8 @@ public:
 		while (!simpleIterator->IsDone())
 		{
 			simpleIterator->Next();
-			Cluster *c = simpleIterator->GetCurrent();
-			if (Is_PDF(c->GetData())) break;			
+			Cluster *cluster = simpleIterator->GetCurrent();
+			if (Is_PDF(cluster->GetData())) break;
 		}
 	}
 

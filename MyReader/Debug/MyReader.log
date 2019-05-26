@@ -1,2 +1,12 @@
-﻿  MyReader.cpp
+﻿  pch.cpp
+  Cluster.cpp
+  Decorator.cpp
+  DiskReader.cpp
+  ExFat_FS.cpp
+  FileSystemParent.cpp
+  FSFactory.cpp
+  Iterator.cpp
+  MyReader.cpp
+  NTFS_FS.cpp
+  Создание кода...
   MyReader.vcxproj -> C:\Users\Надежда\Desktop\Studying\Хорьков\Task5\MyReader\Debug\MyReader.exe

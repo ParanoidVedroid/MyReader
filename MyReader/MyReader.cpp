@@ -23,7 +23,6 @@ int main()
 	cout << "Partition path: ";
 	getline(cin, diskLetter);
 
-
 	try {
 		
 		dr = new DiskReader("\\\\.\\" + diskLetter + ":");
@@ -31,8 +30,8 @@ int main()
 
 		while (true)
 		{
-			cout << "\n1. print info\n" << "2. show pdf clusters\n" << "3. exit" << endl;
-
+			cout << "1. Show info\n" << "2. Show pdf clusters\n" << "3. Exit" << endl;
+			
 			int temp;
 			cin >> temp;
 			switch (temp)
@@ -43,7 +42,8 @@ int main()
 			case 2:
 				dec = new Decorator(new Iterator(fs));
 				for(dec->First(); !dec->IsDone(); dec->Next())
-					printf("0x%X\n", dec->GetCurrentNumber());
+					printf(" 0x%08X\n", dec->GetCurrentNumber());
+				cout << endl;
 				break;
 			case 3:
 				return 0;
